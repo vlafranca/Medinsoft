@@ -6,14 +6,19 @@
 	"require": {
 		"laravel/framework": "4.2.*"
 	},
+    "require-dev": {
+        "way/generators": "~2.0"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",
 			"app/controllers",
-			"app/models",
+			"app/models/entities",
+            "app/models/repositories",
 			"app/database/migrations",
 			"app/database/seeds",
-			"app/tests/TestCase.php"
+			"app/tests/TestCase.php",
+            "app/filters/AclPermittedFilter.php"
 		]
 	},
 	"scripts": {
