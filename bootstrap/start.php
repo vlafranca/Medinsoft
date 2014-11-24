@@ -70,4 +70,7 @@ require $framework.'/Illuminate/Foundation/start.php';
 |
 */
 
+App::bind('IUserRepository', 'UserRepository');
+
+
 return $app;

@@ -15,3 +15,23 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('test', function()
+{
+    return View::make('hello');
+});
+
+Route::filter('acl.permitted', 'AclPermittedFilter');
+
+Route::group(array('prefix' => 'user'), function() {
+    Route::get('login', array(
+        'as' => 'user.index',
+        'uses' => 'UserController@index'
+    ));
+
+    Route::get('supersecret', array(
+        'before' => ['auth', 'acl.permitted'],
+        'as' => 'user.supersecret',
+        'uses' => 'UserController@supersecret'
+    ));
+});
