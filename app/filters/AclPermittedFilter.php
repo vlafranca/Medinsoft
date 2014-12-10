@@ -15,17 +15,11 @@ class AclPermittedFilter {
     public function filter($route, $request)
     {
         $permitted = false;
-//        $user = Auth::user();
-//
-//        $user->load('groups', 'groups.permissions');
-//
-//        foreach($user->groups as $group) {
-//            //var_dump($group->permissions->has());
-            if($this->_user->isAllowed($route->getName())) {
+
+        //if($this->_user->group) {
+            if($this->_user->isAllowed($route->getPrefix())) {
                 $permitted = true;
-//                break;
-            }
-//        }
+           }
 
         if(!$permitted) {
             return Redirect::route('user.denied');

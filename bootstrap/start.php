@@ -71,6 +71,9 @@ require $framework.'/Illuminate/Foundation/start.php';
 */
 
 App::bind('IUserRepository', 'UserRepository');
+App::bind('ICandidateRepository', 'CandidateRepository');
+App::bind('IRecruiterRepository', 'RecruiterRepository');
+App::bind('ITrainingCenterRepository', 'TrainingCenterRepository');
 
 
 return $app;

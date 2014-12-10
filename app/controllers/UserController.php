@@ -37,6 +37,12 @@ class UserController extends \BaseController {
         var_dump($this->_user->isAllowed('user.supersecret'));
     }
 
+    public function confirmEmail($token)
+    {
+        if($this->_user->confirmEmail($token))
+            echo "Email verified";
+    }
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -53,9 +59,33 @@ class UserController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($array, $insert = true)
 	{
-		//
+
+        $validator = Validator::make(
+            $array,
+            array(
+                'password_confirmation' => 'required|min:6',
+                'password' => 'required|min:6|confirmed',
+                'email' => 'required|email|unique:users',
+                'login' => 'required|alpha_num|unique:users'
+            )
+        );
+
+        if($validator->fails()) {
+            return ['ko' => $validator->messages()];
+        } else {
+            if($insert) {
+                $newUser = $this->_user->create($array);
+
+                if ($newUser)
+                    return ['ok' => $newUser];
+                else
+                    return ['ko' => 'unknow error'];
+            } else {
+                return ['ok'=>'ok'];
+            }
+        }
 	}
 
 
