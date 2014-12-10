@@ -1,5 +1,8 @@
 <?php
 
 class CandidateModel extends \Eloquent {
-	protected $fillable = [];
+    protected $table = 'candidates';
+
+    protected $fillable = array('user_id', 'dob', 'name', 'firstname');
+
 }
