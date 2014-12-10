@@ -5,6 +5,12 @@
  * Time: 17:19
  */
 
+
 interface ICandidateRepository extends IRepository {
 
+    /**
+     * @param $array array
+     * @return mixed
+     */
+ //   public function create($array);
 } 

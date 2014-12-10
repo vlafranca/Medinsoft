@@ -5,6 +5,7 @@
  * Time: 17:24
  */
 
+
 class AbstractRepository {
 
 } 

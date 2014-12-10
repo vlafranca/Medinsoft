@@ -7,7 +7,9 @@
 
 class AclGroup extends Eloquent {
 
-    protected $table = 'acl_groups';
+    protected $table = 'acl_group';
+
+    protected $primaryKey = 'group_id';
 
     protected $fillable = array(
         'name', 'description'
@@ -17,7 +19,7 @@ class AclGroup extends Eloquent {
 
     public function users()
     {
-        return $this->belongsToMany('User', 'acl_user_groups', 'group_id', 'user_id');
+        return $this->belongsToMany('Users', 'acl_user_groups', 'group_id', 'user_id');
     }
 
     public function permissions()
